@@ -11,7 +11,7 @@ class ServerFailure extends Failure {
     final statusCode = exception.response?.statusCode;
     switch (type) {
       case DioExceptionType.badResponse:
-        return ServerFailure.badResponse(statusCode: statusCode);
+        return ServerFailure(statusCode: statusCode, expType: type);
       case DioExceptionType.badCertificate:
         return ServerFailure(statusCode: statusCode, expType: type);
       case DioExceptionType.receiveTimeout:
@@ -24,7 +24,6 @@ class ServerFailure extends Failure {
         return ServerFailure(statusCode: statusCode, expType: type);
       case DioExceptionType.connectionError:
         return ServerFailure(statusCode: statusCode, expType: type);
-
       default:
         return ServerFailure.unknownError();
     }
@@ -32,19 +31,5 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.unknownError() {
     return ServerFailure(statusCode: 0, expType: DioExceptionType.unknown);
-  }
-
-  factory ServerFailure.badResponse({int? statusCode}) {
-    return ServerFailure(
-      statusCode: statusCode,
-      expType: DioExceptionType.badResponse,
-    );
-  }
-
-  factory ServerFailure.connectionError() {
-    return ServerFailure(
-      statusCode: 0,
-      expType: DioExceptionType.connectionError,
-    );
   }
 }
