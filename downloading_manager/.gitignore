@@ -33,26 +33,26 @@ migrate_working_dir/
 .pub/
 /build/
 # macOS
-macos/Flutter/Flutter.framework
-macos/Flutter/Flutter.podspec
-macos/.symlinks/
-macos/Pods/
-macos/build/
-macos/.generated/
-macos/.dart_tool/
-macos/.metadata
+/macos/flutter/Flutter.framework
+/macos/flutter/Flutter.podspec
+/macos/.symlinks/
+/macos/Pods/
+/macos/build/
+/macos/.generated/
+/macos/.dart_tool/
+/macos/.metadata
 *.xcuserstate
 *.xcworkspace
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 
 # Linux
-linux/flutter/ephemeral/
-linux/build/
+/linux/flutter/
+/linux/build/
 
 # Windows
-windows/flutter/ephemeral/
-windows/build/
+/windows/flutter/
+/windows/build/
 
 # Web
 web/.dart_tool/
