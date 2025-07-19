@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 
+enum FileType { image, video, audio, document, archive, file }
+
 class FileManager {
   const FileManager();
   String generateFileId(String url, String fileName) {
@@ -10,35 +12,21 @@ class FileManager {
 
   Future<void> openFile(String path) async {}
   Future<void> deleteFile(String path) async {}
-  String getFileType({required String fileName}) {
+  FileType getFileType({required String fileName}) {
     final extension = fileName.split('.').last.toLowerCase();
     switch (extension) {
-      case 'jpg':
-      case 'jpeg':
-      case 'png':
-      case 'gif':
-      case 'bmp':
-      case 'webp':
-        return 'image';
-      case 'mp4':
-      case 'avi':
-      case 'mov':
-      case 'mkv':
-      case 'wmv':
-        return 'video';
-      case 'mp3':
-      case 'wav':
-      case 'flac':
-      case 'aac':
-        return 'audio';
-      case 'pdf':
-        return 'document';
-      case 'zip':
-      case 'rar':
-      case '7z':
-        return 'archive';
+      case 'jpg' || 'jpeg' || 'png' || 'gif' || 'bmp' || 'webp':
+        return FileType.image;
+      case 'mp4' || 'avi' || 'mov' || 'mkv' || 'wmv':
+        return FileType.video;
+      case 'mp3' || 'wav' || 'flac' || 'aac':
+        return FileType.audio;
+      case 'pdf' || 'doc' || 'docx' || 'txt':
+        return FileType.document;
+      case 'zip' || 'rar' || '7z':
+        return FileType.archive;
       default:
-        return 'file';
+        return FileType.file;
     }
   }
 
