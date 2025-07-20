@@ -10,7 +10,7 @@ class ServerFailure extends Failure {
     super.message,
   });
 
-  factory ServerFailure.catchError(DioException exception) {
+  factory ServerFailure.gerErrorMsg(DioException exception) {
     final type = exception.type;
     final statusCode = exception.response?.statusCode;
     switch (type) {

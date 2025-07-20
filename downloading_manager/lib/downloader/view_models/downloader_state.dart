@@ -18,7 +18,7 @@ enum DownloadStatus {
 
 class DownloadState extends Equatable {
   final FileModel? fileModel;
-  final String originalUrl; // Store original URL for retry
+  final String? originalUrl;
   final DownloadStatus status;
   final double progress;
   final String? errorMessage;
@@ -26,7 +26,7 @@ class DownloadState extends Equatable {
 
   const DownloadState({
     this.fileModel,
-    required this.originalUrl,
+    this.originalUrl,
     this.status = DownloadStatus.initial,
     this.progress = 0.0,
     this.errorMessage,
