@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class SizerUtil {
   SizerUtil._();
 
-  static const double designWidth = 375;
-  static const double designHeight = 812;
-
   static late MediaQueryData _mediaQueryData;
   static late double _screenWidth;
   static late double _screenHeight;
   static late double _pixelRatio;
   static late double _textScalerValue;
+  static const double designWidth = 375;
+  static const double designHeight = 812;
+
   static const double p4 = 4.0;
   static const double p6 = 6.0;
   static const double p8 = 8.0;
@@ -67,34 +67,6 @@ class SizerUtil {
   /// Creates a vertical SizedBox for responsive spacing.
   static Widget gapH(double height) {
     return SizedBox(height: setHeight(height));
-  }
-
-  static EdgeInsetsGeometry setSpace({
-    double left = 0,
-    double top = 0,
-    double right = 0,
-    double bottom = 0,
-  }) {
-    return EdgeInsets.only(
-      left: setWidth(left),
-      top: setHeight(top),
-      right: setWidth(right),
-      bottom: setHeight(bottom),
-    );
-  }
-
-  static EdgeInsetsGeometry setSymmetricSpace({
-    double horizontal = 0,
-    double vertical = 0,
-  }) {
-    return EdgeInsets.symmetric(
-      horizontal: setWidth(horizontal),
-      vertical: setHeight(vertical),
-    );
-  }
-
-  static EdgeInsetsGeometry setAllSpace(double padding) {
-    return setSymmetricSpace(horizontal: padding, vertical: padding);
   }
 
   static double setWidthPercentage(double percentage) {

@@ -18,7 +18,7 @@ extension CustomColorsGetter on BuildContext {
 
 // Theme provider using ChangeNotifier for state management
 class AppThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   ThemeMode get themeMode => _themeMode;
 
@@ -50,7 +50,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     final ColorScheme colorScheme = ColorScheme.light(
       primary: AppColors.primaryLight,
-      secondary: AppColors.secondaryLight,
+      secondary: AppColors.darkOrange,
       surface: AppColors.surfaceLight,
       error: AppColors.errorLight,
       onPrimary: Colors.white,
@@ -269,7 +269,7 @@ class AppTheme {
   static ThemeData get darkTheme {
     final ColorScheme colorScheme = ColorScheme.dark(
       primary: AppColors.primaryDark,
-      secondary: AppColors.secondaryDark,
+       secondary: AppColors.darkOrange,
       surface: AppColors.surfaceDark,
       error: AppColors.errorDark,
       onPrimary: Colors.white,
