@@ -61,8 +61,6 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
-
-          contentPadding: EdgeInsets.only(left: 20, top: 16, bottom: 16),
           errorText: errorText,
           errorStyle: context.textTheme.labelLarge?.copyWith(
             fontWeight: FontWeight.w400,
@@ -74,10 +72,9 @@ class CustomTextFormField extends StatelessWidget {
         ),
         keyboardType: TextInputType.emailAddress,
         onChanged: onChanged != null ? (value) => onChanged!(value) : null,
-        onFieldSubmitted:
-            onFieldSubmitted != null
-                ? (value) => onFieldSubmitted!(value)
-                : null,
+        onFieldSubmitted: onFieldSubmitted != null
+            ? (value) => onFieldSubmitted!(value)
+            : null,
       ),
     );
   }

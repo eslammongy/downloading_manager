@@ -340,10 +340,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surfaceDark,
-        contentPadding: EdgeInsets.symmetric(
-          vertical: SizerUtil.p8.h,
-          horizontal: SizerUtil.p12.w,
-        ),
+        contentPadding: EdgeInsets.all(SizerUtil.p12.w),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
           borderSide: BorderSide(color: AppColors.borderColorDark, width: 1),

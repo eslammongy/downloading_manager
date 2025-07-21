@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizerUtil.init(context);
     return MaterialApp(
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       home: BlocProvider(
         create: (_) => DownloaderCubit(),
         child: const DownloadsScreen(),
