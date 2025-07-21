@@ -53,8 +53,8 @@ class AppTheme {
       secondary: AppColors.darkOrange,
       surface: AppColors.surfaceLight,
       error: AppColors.errorLight,
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
+      onPrimary: AppColors.textPrimaryLight,
+      onSecondary: AppColors.textPrimaryLight,
       onSurface: AppColors.textPrimaryLight,
       onError: Colors.white,
     );
@@ -82,11 +82,11 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.surfaceLight,
         elevation: 0,
-        centerTitle: true,
-        iconTheme: IconThemeData(color: AppColors.textPrimaryLight),
+        centerTitle: false,
+        iconTheme: IconThemeData(color: AppColors.textPrimaryDark),
         titleTextStyle: TextStyle(
           color: AppColors.textPrimaryLight,
-          fontSize: 20.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -148,7 +148,7 @@ class AppTheme {
           color: AppColors.textSecondaryLight.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
-        errorStyle:  TextStyle(
+        errorStyle: TextStyle(
           color: AppColors.errorLight.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
@@ -269,7 +269,7 @@ class AppTheme {
   static ThemeData get darkTheme {
     final ColorScheme colorScheme = ColorScheme.dark(
       primary: AppColors.primaryDark,
-       secondary: AppColors.darkOrange,
+      secondary: AppColors.darkOrange,
       surface: AppColors.surfaceDark,
       error: AppColors.errorDark,
       onPrimary: Colors.white,
@@ -301,11 +301,11 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.surfaceDark,
         elevation: 0,
-        centerTitle: true,
+        centerTitle: false,
         iconTheme: IconThemeData(color: AppColors.textPrimaryDark),
         titleTextStyle: TextStyle(
           color: AppColors.textPrimaryDark,
-          fontSize: 20.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
         ),
       ),

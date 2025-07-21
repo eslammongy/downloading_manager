@@ -15,4 +15,7 @@ class AppStrings {
   static const downloadCancelled = 'Download cancelled';
   static const recentlyDownloads = 'Recently Downloads';
   static const seeAll = 'See All';
+  static const ongoing = 'On-going';
+  static const completed = 'Completed';
+  static const failed = 'Failed';
 }

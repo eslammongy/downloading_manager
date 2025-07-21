@@ -47,7 +47,7 @@ migrate_working_dir/
 *.xcodeproj/xcuserdata/
 
 # Linux
-/linux/flutter/
+linux/flutter/
 /linux/build/
 
 # Windows
@@ -58,6 +58,9 @@ migrate_working_dir/
 web/.dart_tool/
 web/build/
 
+/linux/flutter/generated_plugin_registrant.cc
+/linux/flutter/generated_plugins.cmake
+/macos/Flutter/GeneratedPluginRegistrant.swift
 
 # Symbolication related
 app.*.symbols

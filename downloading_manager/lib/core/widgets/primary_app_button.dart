@@ -1,5 +1,6 @@
 import 'package:downloading_manager/core/theme/app_colors.dart';
 import 'package:downloading_manager/core/theme/app_theme.dart';
+import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,10 +20,12 @@ class AppPrimaryButton extends StatelessWidget {
   final EdgeInsets padding;
   final double fontSize;
   final double iconSize;
+  final double height;
   const AppPrimaryButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.height = 42,
     this.variant = ButtonVariant.primary,
     this.fontSize = 16,
     this.iconSize = 20,
@@ -38,32 +41,29 @@ class AppPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     Color bgColor;
     Color textColor;
     Color borderColor;
 
     switch (variant) {
       case ButtonVariant.primary:
-        bgColor = AppColors.primaryDark;
-        textColor = Colors.white;
+        bgColor = context.colorScheme.primary;
+        textColor = context.customColors.textPrimary;
         borderColor = Colors.transparent;
         break;
       case ButtonVariant.secondary:
         bgColor = context.colorScheme.surface;
-        textColor = Colors.white;
+        textColor = context.customColors.textPrimary;
         borderColor = context.customColors.borderColor;
         break;
       case ButtonVariant.outline:
         bgColor = context.colorScheme.surface;
-        textColor = isDark
-            ? AppColors.textPrimaryDark
-            : AppColors.textPrimaryLight;
+        textColor = context.customColors.textPrimary;
         borderColor = AppColors.primaryDark;
         break;
       case ButtonVariant.text:
         bgColor = Colors.transparent;
-        textColor = txtColor ?? context.customColors.textPrimary;
+        textColor = context.customColors.textPrimary;
         borderColor = Colors.transparent;
         break;
     }
@@ -72,57 +72,73 @@ class AppPrimaryButton extends StatelessWidget {
     if (isDisabled) {
       bgColor = bgColor.withValues(alpha: 0.5);
       textColor = textColor.withValues(alpha: 0.5);
-      borderColor = borderColor.withValues(alpha: 0.5);
+      //borderColor = borderColor.withValues(alpha: 0.5);
     }
 
     return Padding(
       padding: margin,
       child: ElevatedButton(
-        onPressed: () {
-          if (!isLoading && !isDisabled) {
-            HapticFeedback.heavyImpact();
-            onPressed();
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: bgColor,
-          foregroundColor: txtColor ?? textColor,
-          elevation: variant == ButtonVariant.text ? 0 : 1,
-          padding: padding,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: BorderSide(color: borderColor, width: 1.0),
-          ),
-        ),
-        child: isLoading
-            ? SizedBox(
-                width: iconSize,
-                height: iconSize,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.0,
-                  valueColor: AlwaysStoppedAnimation<Color>(textColor),
-                ),
-              )
-            : Row(
-                mainAxisAlignment: mainAlignment,
-                children: [
-                  if (leadingIcon != null) ...[
-                    Icon(leadingIcon, size: iconSize),
-                    SizedBox(width: 8.0),
-                  ],
-                  Text(
-                    text,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  if (trailingIcon != null) ...[
-                    SizedBox(width: 8.0),
-                    Icon(trailingIcon, size: iconSize),
-                  ],
-                ],
-              ),
+        onPressed: isDisabled
+            ? null
+            : () {
+                HapticFeedback.mediumImpact();
+                onPressed();
+              },
+        style: _buildStyle(bgColor, textColor, borderColor),
+        child: _buildButtonBody(),
+      ),
+    );
+  }
+
+  Widget _buildButtonBody() {
+    if (isLoading) {
+      return _buildLoadingProgress(txtColor ?? Colors.white);
+    }
+    if (leadingIcon != null || trailingIcon != null) {
+      return Row(
+        mainAxisAlignment: mainAlignment,
+        children: [
+          if (leadingIcon != null) Icon(leadingIcon, size: iconSize),
+          _buildButtonTitle(),
+          if (trailingIcon != null) Icon(trailingIcon, size: iconSize),
+        ],
+      );
+    }
+    return _buildButtonTitle();
+  }
+
+  Text _buildButtonTitle() {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: FontWeight.w500,
+        color: txtColor ?? Colors.white,
+      ),
+    );
+  }
+
+  ButtonStyle _buildStyle(Color bgColor, Color textColor, Color borderColor) {
+    return ElevatedButton.styleFrom(
+      backgroundColor: bgColor,
+      foregroundColor: txtColor ?? textColor,
+      elevation: variant == ButtonVariant.text ? 0 : 1,
+      padding: padding,
+      fixedSize: Size.fromHeight(height.h),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+        side: BorderSide(color: borderColor, width: 1.0),
+      ),
+    );
+  }
+
+  SizedBox _buildLoadingProgress(Color textColor) {
+    return SizedBox(
+      width: iconSize,
+      height: iconSize,
+      child: CircularProgressIndicator(
+        strokeWidth: 2.0,
+        valueColor: AlwaysStoppedAnimation<Color>(textColor),
       ),
     );
   }

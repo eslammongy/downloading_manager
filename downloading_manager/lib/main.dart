@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     SizerUtil.init(context);
     return MaterialApp(
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       home: BlocProvider(
         create: (_) => DownloaderCubit(),
         child: const DownloadsScreen(),

@@ -1,7 +1,5 @@
-import 'package:downloading_manager/downloader/view_models/downloader_cubit.dart';
 import 'package:downloading_manager/downloader/view_models/downloader_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
