@@ -5,6 +5,7 @@ import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:downloading_manager/core/widgets/custom_text_form_field.dart';
 import 'package:downloading_manager/core/widgets/primary_app_button.dart';
 import 'package:downloading_manager/downloader/views/widgets/downloader_actions_button.dart';
+import 'package:downloading_manager/downloader/views/widgets/ongoing_downloading_list.dart';
 import 'package:downloading_manager/downloader/views/widgets/ongoing_downloads_header.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,8 @@ class DownloadsScreen extends StatelessWidget {
             const DownloaderActionsButton(),
             SizerUtil.gapH(42),
             const OngoingDownloadsHeader(),
+            Expanded(child: const OngoingDownloadingList()),
+            SizerUtil.gapH(22),
           ],
         ),
       ),
