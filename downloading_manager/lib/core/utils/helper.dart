@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:downloading_manager/core/constant/assets_manager.dart';
 
 /// Throws a DioException with a connection error type. This is used to
 /// simulate a network connection error when fetching remote data.
@@ -61,3 +62,77 @@ String getFileType(String fileName) {
       return 'file';
   }
 }
+
+class ScrollItems {
+  final String image;
+  final String name;
+  final int color;
+
+  ScrollItems({required this.image, required this.name, required this.color});
+}
+
+final dataItems = <ScrollItems>[
+  ScrollItems(
+    name: "Chicken",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFFFA4D8,
+  ),
+  ScrollItems(
+    name: "Burger",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF99C5FD,
+  ),
+  ScrollItems(
+    name: "Noodles",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF40AC9C,
+  ),
+  ScrollItems(
+    name: "Lemon",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFD6F670,
+  ),
+  ScrollItems(
+    name: "Rum",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFE7668E,
+  ),
+
+  ScrollItems(
+    name: "Cheese",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF99C5FD,
+  ),
+
+  ScrollItems(
+    name: "CocaCola",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFFFA4D8,
+  ),
+  ScrollItems(
+    name: "Ice Cream",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF447C12,
+  ),
+
+  ScrollItems(
+    name: "Pizza",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFB1D1FF,
+  ),
+  ScrollItems(
+    name: "Chicken",
+    image: AssetsManager.downloadingImg,
+    color: 0xFFFFA4D8,
+  ),
+  ScrollItems(
+    name: "Burger",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF99C5FD,
+  ),
+  ScrollItems(
+    name: "Noodles",
+    image: AssetsManager.downloadingImg,
+    color: 0xFF40AC9C,
+  ),
+];

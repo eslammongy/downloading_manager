@@ -31,7 +31,9 @@ class OngoingDownloadsHeader extends StatelessWidget {
           padding: EdgeInsets.only(left: 16.0, top: 10.0, bottom: 10.0),
           height: 36,
           txtColor: context.colorScheme.primary,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/all-downloads');
+          },
         ),
       ],
     );

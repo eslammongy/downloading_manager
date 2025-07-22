@@ -9,8 +9,8 @@ import 'package:downloading_manager/downloader/views/widgets/ongoing_downloading
 import 'package:downloading_manager/downloader/views/widgets/ongoing_downloads_header.dart';
 import 'package:flutter/material.dart';
 
-class DownloadsScreen extends StatelessWidget {
-  const DownloadsScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
