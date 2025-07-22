@@ -1,5 +1,7 @@
 import 'package:downloading_manager/core/theme/app_theme.dart';
 import 'package:downloading_manager/core/utils/downloading_progress_indicator.dart';
+import 'package:downloading_manager/core/utils/file_manager.dart';
+import 'package:downloading_manager/core/utils/file_type.dart';
 import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:downloading_manager/downloader/models/file_model.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +38,8 @@ class _OngoingDownloadingListState extends State<OngoingDownloadingList> {
     _items.insert(
       index,
       FileModel(
-        fileName: 'New File ${index + 1}',
-        fileType: 'application/octet-stream',
+        name: 'New File ${index + 1}',
+        type: FileType.document,
         totalBytes: 1024 * (index + 1),
         id: '',
         originalUrl: '', // Example size
@@ -90,10 +92,10 @@ class OngoingDownloadingItem extends StatelessWidget {
                 ),
                 const DownloadingProgressIndicator(),
                 SizerUtil.gapH(8),
-                Text(item.fileName, style: context.textTheme.titleMedium),
+                Text(item.name, style: context.textTheme.titleMedium),
                 SizerUtil.gapH(8),
                 Text(
-                  'Size: ${FileDataHelper.formatBytes(item.totalBytes)}',
+                  'Size: ${fileManager.formatBytes(item.totalBytes)}',
                   style: context.textTheme.titleSmall?.copyWith(
                     color: context.customColors.textSecondary,
                   ),

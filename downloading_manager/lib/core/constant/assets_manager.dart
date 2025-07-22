@@ -8,4 +8,14 @@ abstract class AssetsManager {
   static const String emptyStateImg = "assets/svg/empty_state.svg";
   static const String downloadingImg = "assets/images/downloading.png";
   static const String checkMarkIcon = "assets/images/checkmark.png";
+  static const String jsonFileImg = "assets/images/json_file.png";
+  static const String pdfFileImg = "assets/images/pdf.png";
+  static const String zipFileImg = "assets/images/rar_format.png";
+  static const String excelFileImg = "assets/images/excel_file.png";
+  static const String docFileImg = "assets/images/text.png";
+  static const String imageFileImg = "assets/images/picture.png";
+  static const String audioFileImg = "assets/images/headphones.png";
+  static const String videoFileImg = "assets/images/youtube.png";
+  static const String powerPointFileImg = "assets/images/projector_screen.png";
+  static const String otherFileImg = "assets/images/file.png";
 }

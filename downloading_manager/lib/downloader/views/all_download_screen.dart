@@ -1,7 +1,7 @@
 import 'package:downloading_manager/core/constant/app_strings.dart';
-import 'package:downloading_manager/core/theme/app_theme.dart';
-import 'package:downloading_manager/core/utils/helper.dart';
 import 'package:downloading_manager/core/utils/screen_util.dart';
+import 'package:downloading_manager/downloader/models/file_model.dart';
+import 'package:downloading_manager/downloader/views/widgets/download_listitem.dart';
 import 'package:flutter/material.dart';
 
 class AllDownloadScreen extends StatefulWidget {
@@ -40,12 +40,12 @@ class _AllDownloadScreenState extends State<AllDownloadScreen> {
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: dataItems.length,
+                itemCount: dummyFileData.length,
                 itemBuilder: (context, index) {
-                  final myUser = dataItems[index];
+                  final file = dummyFileData[index];
                   return DownloadsListItem(
                     hasAnimated: hasAnimated,
-                    myUser: myUser,
+                    file: file,
                     index: index,
                   );
                 },

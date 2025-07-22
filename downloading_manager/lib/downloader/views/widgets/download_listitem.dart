@@ -1,7 +1,7 @@
-import 'dart:io';
-
+import 'package:downloading_manager/core/constant/assets_manager.dart';
 import 'package:downloading_manager/core/theme/app_theme.dart';
-import 'package:downloading_manager/core/utils/helper.dart';
+import 'package:downloading_manager/core/utils/file_manager.dart';
+import 'package:downloading_manager/core/utils/file_type.dart';
 import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:downloading_manager/downloader/models/file_model.dart';
 import 'package:flutter/material.dart';
@@ -38,15 +38,15 @@ class DownloadsListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(radius: 35, backgroundImage: AssetImage(myUser.image)),
+          CircleAvatar(radius: 35, backgroundImage: AssetImage(getFileImg())),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(file.f, style: context.textTheme.titleMedium),
+              Text(file.name, style: context.textTheme.titleMedium),
               Text(
-                myUser.name,
+                file.type.name,
                 style: context.textTheme.titleSmall?.copyWith(
                   color: context.customColors.textSecondary,
                 ),
@@ -55,7 +55,7 @@ class DownloadsListItem extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            myUser.name,
+            fileManager.formatBytes(file.totalBytes),
             style: context.textTheme.titleSmall?.copyWith(
               color: context.customColors.textSecondary,
             ),
@@ -63,5 +63,30 @@ class DownloadsListItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getFileImg() {
+    switch (file.type) {
+      case FileType.image:
+        return AssetsManager.imageFileImg;
+      case FileType.video:
+        return AssetsManager.videoFileImg;
+      case FileType.audio:
+        return AssetsManager.audioFileImg;
+      case FileType.pdf:
+        return AssetsManager.pdfFileImg;
+      case FileType.document:
+        return AssetsManager.docFileImg;
+      case FileType.excel:
+        return AssetsManager.excelFileImg;
+      case FileType.powerpoint:
+        return AssetsManager.powerPointFileImg;
+      case FileType.zip:
+        return AssetsManager.zipFileImg;
+      case FileType.json:
+        return AssetsManager.jsonFileImg;
+      case FileType.file:
+        return AssetsManager.otherFileImg;
+    }
   }
 }

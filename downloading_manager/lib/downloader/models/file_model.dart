@@ -1,9 +1,10 @@
+import 'package:downloading_manager/core/utils/file_type.dart';
 import 'package:equatable/equatable.dart';
 
 class FileModel extends Equatable {
   final String id;
   final String name;
-  final String type;
+  final FileType type;
   final String originalUrl;
   final String? path;
   final int totalBytes;
@@ -19,7 +20,7 @@ class FileModel extends Equatable {
   FileModel copyWith({
     String? id,
     String? name,
-    String? type,
+    FileType? type,
     String? originalUrl,
     String? path,
     int? totalBytes,
@@ -43,7 +44,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '1',
     name: 'vacation_photo.jpg',
-    type: 'image/jpeg',
+    type: FileType.image,
     originalUrl: 'https://example.com/files/vacation_photo.jpg',
     totalBytes: 2457600, // ~2.4 MB
     path: '/storage/emulated/0/Download/vacation_photo.jpg',
@@ -51,7 +52,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '2',
     name: 'project_report.pdf',
-    type: 'application/pdf',
+    type: FileType.document,
     originalUrl: 'https://example.com/documents/project_report.pdf',
     totalBytes: 5242880, // 5 MB
     path: '/storage/emulated/0/Documents/project_report.pdf',
@@ -59,8 +60,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '3',
     name: 'presentation.pptx',
-    type:
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    type: FileType.powerpoint,
     originalUrl: 'https://example.com/files/presentation.pptx',
     totalBytes: 15728640, // 15 MB
     path: null, // Not downloaded yet
@@ -68,7 +68,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '4',
     name: 'music_track.mp3',
-    type: 'audio/mpeg',
+    type: FileType.audio,
     originalUrl: 'https://example.com/audio/music_track.mp3',
     totalBytes: 8388608, // 8 MB
     path: '/storage/emulated/0/Music/music_track.mp3',
@@ -76,7 +76,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '5',
     name: 'tutorial_video.mp4',
-    type: 'video/mp4',
+    type: FileType.video,
     originalUrl: 'https://example.com/videos/tutorial_video.mp4',
     totalBytes: 104857600, // 100 MB
     path: '/storage/emulated/0/Movies/tutorial_video.mp4',
@@ -84,7 +84,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '6',
     name: 'app_icon.png',
-    type: 'image/png',
+    type: FileType.image,
     originalUrl: 'https://example.com/images/app_icon.png',
     totalBytes: 51200, // 50 KB
     path: '/storage/emulated/0/Pictures/app_icon.png',
@@ -92,7 +92,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '7',
     name: 'spreadsheet.xlsx',
-    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    type: FileType.excel,
     originalUrl: 'https://example.com/files/spreadsheet.xlsx',
     totalBytes: 1048576, // 1 MB
     path: null, // Not downloaded yet
@@ -100,7 +100,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '8',
     name: 'archive.zip',
-    type: 'application/zip',
+    type: FileType.zip,
     originalUrl: 'https://example.com/files/archive.zip',
     totalBytes: 25165824, // 24 MB
     path: '/storage/emulated/0/Download/archive.zip',
@@ -108,8 +108,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '9',
     name: 'document.docx',
-    type:
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    type: FileType.document,
     originalUrl: 'https://example.com/documents/document.docx',
     totalBytes: 3145728, // 3 MB
     path: '/storage/emulated/0/Documents/document.docx',
@@ -117,7 +116,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '10',
     name: 'logo.svg',
-    type: 'image/svg+xml',
+    type: FileType.image,
     originalUrl: 'https://example.com/images/logo.svg',
     totalBytes: 12288, // 12 KB
     path: null, // Not downloaded yet
@@ -125,7 +124,7 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '11',
     name: 'sample_data.json',
-    type: 'application/json',
+    type: FileType.json,
     originalUrl: 'https://api.example.com/data/sample_data.json',
     totalBytes: 204800, // 200 KB
     path: '/storage/emulated/0/Download/sample_data.json',
@@ -133,61 +132,10 @@ final List<FileModel> dummyFileData = [
   FileModel(
     id: '12',
     name: 'installation_guide.txt',
-    type: 'text/plain',
+    type: FileType.document,
     originalUrl: 'https://example.com/docs/installation_guide.txt',
     totalBytes: 4096, // 4 KB
     path: '/storage/emulated/0/Documents/installation_guide.txt',
   ),
 ];
 
-// Helper functions for testing
-class FileDataHelper {
-  // Get files by type
-  static List<FileModel> getFilesByType(String type) {
-    return dummyFileData.where((file) => file.type.startsWith(type)).toList();
-  }
-
-  // Get downloaded files only
-  static List<FileModel> getDownloadedFiles() {
-    return dummyFileData.where((file) => file.path != null).toList();
-  }
-
-  // Get pending downloads
-  static List<FileModel> getPendingDownloads() {
-    return dummyFileData.where((file) => file.path == null).toList();
-  }
-
-  // Format file size
-  static String formatBytes(int bytes) {
-    if (bytes < 1024) return '$bytes B';
-    if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
-    if (bytes < 1024 * 1024 * 1024) {
-      return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
-    }
-    return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(1)} GB';
-  }
-
-  // Get file extension
-  static String getFileExtension(String name) {
-    return name.split('.').last.toLowerCase();
-  }
-
-  // Get file icon based on type
-  static String getFileIcon(String type) {
-    if (type.startsWith('image/')) return '🖼️';
-    if (type.startsWith('video/')) return '🎥';
-    if (type.startsWith('audio/')) return '🎵';
-    if (type.contains('pdf')) return '📄';
-    if (type.contains('document') || type.contains('word')) return '📝';
-    if (type.contains('spreadsheet') || type.contains('excel')) {
-      return '📊';
-    }
-    if (type.contains('presentation') || type.contains('powerpoint')) {
-      return '📺';
-    }
-    if (type.contains('zip') || type.contains('archive')) return '📦';
-    if (type.contains('json')) return '📋';
-    if (type.contains('text')) return '📃';
-    return '📁';
-  }
-}

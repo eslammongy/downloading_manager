@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:downloading_manager/core/utils/file_type.dart';
+import 'package:downloading_manager/downloader/models/file_model.dart';
 import 'package:path_provider/path_provider.dart';
-
-enum FileType { image, video, audio, document, archive, file }
 
 class FileManager {
   const FileManager();
@@ -21,10 +21,18 @@ class FileManager {
         return FileType.video;
       case 'mp3' || 'wav' || 'flac' || 'aac':
         return FileType.audio;
-      case 'pdf' || 'doc' || 'docx' || 'txt':
+      case 'doc' || 'docx' || 'txt':
         return FileType.document;
+      case 'pdf':
+        return FileType.pdf;
       case 'zip' || 'rar' || '7z':
-        return FileType.archive;
+        return FileType.zip;
+      case 'json':
+        return FileType.json;
+      case 'xls' || 'xlsx':
+        return FileType.excel;
+      case 'ppt' || 'pptx':
+        return FileType.powerpoint;
       default:
         return FileType.file;
     }
@@ -53,6 +61,38 @@ class FileManager {
     }
 
     return typeDir;
+  }
+
+  // Get files by type
+  List<FileModel> getFilesByType(String type) {
+    return dummyFileData
+        .where((file) => file.type.name.startsWith(type))
+        .toList();
+  }
+
+  // Get downloaded files only
+  List<FileModel> getDownloadedFiles() {
+    return dummyFileData.where((file) => file.path != null).toList();
+  }
+
+  // Get pending downloads
+  List<FileModel> getPendingDownloads() {
+    return dummyFileData.where((file) => file.path == null).toList();
+  }
+
+  // Format file size
+  String formatBytes(int bytes) {
+    if (bytes < 1024) return '$bytes B';
+    if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
+    if (bytes < 1024 * 1024 * 1024) {
+      return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+    }
+    return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(1)} GB';
+  }
+
+  // Get file extension
+  String getFileExtension(String name) {
+    return name.split('.').last.toLowerCase();
   }
 }
 
