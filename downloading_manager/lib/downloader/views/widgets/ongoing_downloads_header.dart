@@ -15,7 +15,7 @@ class OngoingDownloadsHeader extends StatelessWidget {
         Icon(
           Icons.downloading_rounded,
           size: SizerUtil.setSp(24),
-          color: context.customColors.priorityLow,
+          color: context.colorScheme.primary,
         ),
         SizerUtil.gapW(6),
         Text(

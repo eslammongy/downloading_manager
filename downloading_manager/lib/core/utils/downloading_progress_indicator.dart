@@ -25,9 +25,9 @@ class _DownloadingProgressIndicatorState
       size: Size(100.w, 100.w),
       painter: CirclePainter(
         CircleDrawerOptions(
-          drawType: CircleDrawType.borderOnly,
-          borderColor: context.customColors.priorityHigh,
-          fillColor: context.customColors.textPrimary,
+          drawType: CircleDrawType.fillWithBorder,
+          borderColor: context.colorScheme.primary,
+          fillColor: context.colorScheme.primary.withValues(alpha: 0.3),
           showProgressText: true,
           borderWidth: 10.w,
           progress: 0.8,

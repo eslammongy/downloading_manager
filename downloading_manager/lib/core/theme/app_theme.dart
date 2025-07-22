@@ -50,7 +50,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     final ColorScheme colorScheme = ColorScheme.light(
       primary: AppColors.primary,
-      secondary: AppColors.darkOrange,
+      secondary: AppColors.secondary,
       surface: AppColors.surfaceLight,
       error: AppColors.error,
       onPrimary: AppColors.textPrimaryLight,
@@ -269,7 +269,7 @@ class AppTheme {
   static ThemeData get darkTheme {
     final ColorScheme colorScheme = ColorScheme.dark(
       primary: AppColors.primary,
-      secondary: AppColors.darkOrange,
+      secondary: AppColors.secondary,
       surface: AppColors.surfaceDark,
       error: AppColors.error,
       onPrimary: Colors.white,

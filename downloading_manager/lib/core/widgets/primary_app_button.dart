@@ -1,4 +1,3 @@
-import 'package:downloading_manager/core/theme/app_colors.dart';
 import 'package:downloading_manager/core/theme/app_theme.dart';
 import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,7 @@ class AppPrimaryButton extends StatelessWidget {
   final EdgeInsets margin;
   final MainAxisAlignment mainAlignment;
   final Color? txtColor;
+  final Color? brColor;
   final EdgeInsets padding;
   final double fontSize;
   final double iconSize;
@@ -36,6 +36,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.mainAlignment = MainAxisAlignment.center,
     this.margin = const EdgeInsets.all(0),
     this.txtColor,
+    this.brColor,
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
   });
 
@@ -43,7 +44,7 @@ class AppPrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Color bgColor;
     Color textColor;
-    Color borderColor;
+    Color borderColor = brColor ?? context.customColors.borderColor;
 
     switch (variant) {
       case ButtonVariant.primary:
@@ -54,12 +55,10 @@ class AppPrimaryButton extends StatelessWidget {
       case ButtonVariant.secondary:
         bgColor = context.colorScheme.surface;
         textColor = context.customColors.textPrimary;
-        borderColor = context.customColors.borderColor;
         break;
       case ButtonVariant.outline:
         bgColor = context.colorScheme.surface;
         textColor = context.customColors.textPrimary;
-        borderColor = AppColors.primary;
         break;
       case ButtonVariant.text:
         bgColor = Colors.transparent;
@@ -68,11 +67,9 @@ class AppPrimaryButton extends StatelessWidget {
         break;
     }
 
-    // Adjust colors if disabled
     if (isDisabled) {
       bgColor = bgColor.withValues(alpha: 0.5);
       textColor = textColor.withValues(alpha: 0.5);
-      //borderColor = borderColor.withValues(alpha: 0.5);
     }
 
     return Padding(

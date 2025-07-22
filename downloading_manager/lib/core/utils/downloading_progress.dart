@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:downloading_manager/core/theme/app_colors.dart';
+import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:flutter/material.dart';
 
 enum CircleDrawType { borderOnly, fillOnly, fillWithBorder }
@@ -7,6 +8,7 @@ enum CircleDrawType { borderOnly, fillOnly, fillWithBorder }
 class CircleDrawerOptions {
   final CircleDrawType drawType;
   final Color fillColor;
+  final Color textColor;
   final Color borderColor;
   final double borderWidth;
   final double progress; // 0.0 to 1.0
@@ -19,6 +21,7 @@ class CircleDrawerOptions {
     this.drawType = CircleDrawType.fillWithBorder,
     this.fillColor = AppColors.secondary,
     this.borderColor = AppColors.secondary,
+    this.textColor = Colors.white,
     this.borderWidth = 12.0,
     this.progress = 1.0,
     this.startAngle = -math.pi / 2, // Start from top
@@ -97,10 +100,10 @@ class CircleDrawer {
     // Default text style if none provided
     final textStyle =
         options.progressTextStyle ??
-        const TextStyle(
-          fontSize: 16,
+        TextStyle(
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: options.textColor,
         );
 
     // Create text painter
@@ -131,14 +134,14 @@ class CircleDrawer {
     final paint = Paint()
       ..color = options.fillColor
       ..style = PaintingStyle.fill;
-
-    if (options.progress >= 1.0) {
-      // Draw complete circle
-      canvas.drawCircle(rect.center, rect.width / 2, paint);
-    } else if (options.progress > 0.0) {
-      // Draw arc for partial circle
-      canvas.drawArc(rect, options.startAngle, sweepAngle, true, paint);
-    }
+    canvas.drawCircle(rect.center, rect.width / 2, paint);
+    // if (options.progress >= 1.0) {
+    //   // Draw complete circle
+    //   canvas.drawCircle(rect.center, rect.width / 2, paint);
+    // } else if (options.progress > 0.0) {
+    //   // Draw arc for partial circle
+    // //  canvas.drawArc(rect, options.startAngle, sweepAngle, true, paint);
+    // }
   }
 
   static void _drawBorder(

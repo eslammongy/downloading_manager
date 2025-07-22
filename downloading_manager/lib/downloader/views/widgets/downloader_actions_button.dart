@@ -15,7 +15,7 @@ class DownloaderActionsButton extends StatelessWidget {
         AppPrimaryButton(
           text: AppStrings.cancel,
           variant: ButtonVariant.outline,
-          txtColor: context.colorScheme.error,
+          brColor: context.colorScheme.error,
           padding: EdgeInsets.symmetric(
             horizontal: SizerUtil.setWidth(24),
             vertical: 10,
