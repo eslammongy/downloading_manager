@@ -66,22 +66,20 @@ class AppColors {
   // Use a private constructor to prevent instantiation
   AppColors._();
 
+  static const Color primary = Color(0xFF4A6FE3);
+  static const Color secondary = Color(0xFF32D4A4);
+  static const Color error = Color(0xFFB00020);
   // Light Theme Colors
-  static const Color primaryLight = Color(0xFF4A6FE3);
-  static const Color secondaryLight = Color(0xFF32D4A4);
+
   static const Color backgroundLight = Color(0xFFF9FAFC);
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color errorLight = Color(0xFFB00020);
   static const Color textPrimaryLight = Color(0xFF121212);
   static const Color textSecondaryLight = Color(0xFF757575);
   static const Color borderColorLight = Color(0xFFE0E0E0);
 
   // Dark Theme Colors
-  static const Color primaryDark = Color(0xFF4A6FE3);
-  static const Color secondaryDark = Color(0xFF32D4A4);
   static const Color backgroundDark = Color(0xFF121212);
   static const Color surfaceDark = Color(0xFF1B1B1B);
-  static const Color errorDark = Color(0xFFE53935);
   static const Color textPrimaryDark = Color(0xFFFFFFFF);
   static const Color textSecondaryDark = Color(0xFFE6E6E6);
   static const Color borderColorDark = Color(0xFF383838);

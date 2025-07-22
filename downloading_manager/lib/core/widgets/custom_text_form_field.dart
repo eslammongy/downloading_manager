@@ -20,7 +20,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefix,
     this.fontSize = 14,
     this.textColor = AppColors.textPrimaryDark,
-    this.hintColor = AppColors.primaryLight,
+    this.hintColor = AppColors.primary,
     this.borderColor,
   });
 
@@ -52,7 +52,7 @@ class CustomTextFormField extends StatelessWidget {
         style: context.textTheme.bodyLarge?.copyWith(
           color: context.customColors.textPrimary,
         ),
-        cursorColor: AppColors.primaryDark,
+        cursorColor: AppColors.primary,
         autocorrect: true,
         enableSuggestions: true,
         obscureText: obscureText,

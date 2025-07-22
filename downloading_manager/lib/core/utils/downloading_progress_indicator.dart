@@ -1,3 +1,4 @@
+import 'package:downloading_manager/core/theme/app_theme.dart';
 import 'package:downloading_manager/core/utils/downloading_progress.dart';
 import 'package:downloading_manager/core/utils/screen_util.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,8 @@ class _DownloadingProgressIndicatorState
       painter: CirclePainter(
         CircleDrawerOptions(
           drawType: CircleDrawType.borderOnly,
-          borderColor: Colors.green,
+          borderColor: context.customColors.priorityHigh,
+          fillColor: context.customColors.textPrimary,
           showProgressText: true,
           borderWidth: 10.w,
           progress: 0.8,

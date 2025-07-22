@@ -59,7 +59,7 @@ class AppPrimaryButton extends StatelessWidget {
       case ButtonVariant.outline:
         bgColor = context.colorScheme.surface;
         textColor = context.customColors.textPrimary;
-        borderColor = AppColors.primaryDark;
+        borderColor = AppColors.primary;
         break;
       case ButtonVariant.text:
         bgColor = Colors.transparent;

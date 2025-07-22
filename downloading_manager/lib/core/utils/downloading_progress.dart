@@ -17,8 +17,8 @@ class CircleDrawerOptions {
 
   const CircleDrawerOptions({
     this.drawType = CircleDrawType.fillWithBorder,
-    this.fillColor = AppColors.secondaryDark,
-    this.borderColor = AppColors.secondaryDark,
+    this.fillColor = AppColors.secondary,
+    this.borderColor = AppColors.secondary,
     this.borderWidth = 12.0,
     this.progress = 1.0,
     this.startAngle = -math.pi / 2, // Start from top

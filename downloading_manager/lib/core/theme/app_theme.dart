@@ -49,10 +49,10 @@ class AppTheme {
   // Light Theme
   static ThemeData get lightTheme {
     final ColorScheme colorScheme = ColorScheme.light(
-      primary: AppColors.primaryLight,
+      primary: AppColors.primary,
       secondary: AppColors.darkOrange,
       surface: AppColors.surfaceLight,
-      error: AppColors.errorLight,
+      error: AppColors.error,
       onPrimary: AppColors.textPrimaryLight,
       onSecondary: AppColors.textPrimaryLight,
       onSurface: AppColors.textPrimaryLight,
@@ -92,17 +92,17 @@ class AppTheme {
       ),
 
       tabBarTheme: TabBarThemeData(
-        labelColor: AppColors.primaryLight,
+        labelColor: AppColors.primary,
         unselectedLabelColor: AppColors.textSecondaryLight,
         indicatorSize: TabBarIndicatorSize.tab,
         indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(width: 2.0, color: AppColors.primaryLight),
+          borderSide: BorderSide(width: 2.0, color: AppColors.primary),
         ),
       ),
 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.surfaceLight,
-        selectedItemColor: AppColors.primaryLight,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.textSecondaryLight,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
@@ -134,22 +134,22 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.primaryLight, width: 2),
+          borderSide: BorderSide(color: AppColors.primary, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.errorLight, width: 1),
+          borderSide: BorderSide(color: AppColors.error, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.errorLight, width: 2),
+          borderSide: BorderSide(color: AppColors.error, width: 2),
         ),
         hintStyle: TextStyle(
           color: AppColors.textSecondaryLight.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
         errorStyle: TextStyle(
-          color: AppColors.errorLight.withValues(alpha: 0.7),
+          color: AppColors.error.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
         labelStyle: TextStyle(
@@ -222,7 +222,7 @@ class AppTheme {
       checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryLight;
+            return AppColors.primary;
           }
           return Colors.transparent;
         }),
@@ -235,13 +235,13 @@ class AppTheme {
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryLight;
+            return AppColors.primary;
           }
           return Colors.white;
         }),
         trackColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryLight.withValues(alpha: 0.5);
+            return AppColors.primary.withValues(alpha: 0.5);
           }
           return AppColors.textSecondaryLight.withValues(alpha: 0.3);
         }),
@@ -268,10 +268,10 @@ class AppTheme {
   // Dark Theme
   static ThemeData get darkTheme {
     final ColorScheme colorScheme = ColorScheme.dark(
-      primary: AppColors.primaryDark,
+      primary: AppColors.primary,
       secondary: AppColors.darkOrange,
       surface: AppColors.surfaceDark,
-      error: AppColors.errorDark,
+      error: AppColors.error,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
       onSurface: AppColors.textPrimaryDark,
@@ -311,17 +311,17 @@ class AppTheme {
       ),
 
       tabBarTheme: TabBarThemeData(
-        labelColor: AppColors.primaryDark,
+        labelColor: AppColors.primary,
         unselectedLabelColor: AppColors.textSecondaryDark,
         indicatorSize: TabBarIndicatorSize.tab,
         indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(width: 2.0, color: AppColors.primaryDark),
+          borderSide: BorderSide(width: 2.0, color: AppColors.primary),
         ),
       ),
 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.surfaceDark,
-        selectedItemColor: AppColors.primaryDark,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.textSecondaryDark,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
@@ -351,22 +351,22 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.primaryDark, width: 2),
+          borderSide: BorderSide(color: AppColors.primary, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.errorDark, width: 1),
+          borderSide: BorderSide(color: AppColors.error, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(SizerUtil.p12.r),
-          borderSide: BorderSide(color: AppColors.errorDark, width: 2),
+          borderSide: BorderSide(color: AppColors.error, width: 2),
         ),
         hintStyle: TextStyle(
           color: AppColors.textSecondaryDark.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
         errorStyle: TextStyle(
-          color: AppColors.errorLight.withValues(alpha: 0.7),
+          color: AppColors.error.withValues(alpha: 0.7),
           fontSize: 12.sp,
         ),
         labelStyle: TextStyle(
@@ -434,7 +434,7 @@ class AppTheme {
       checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryDark;
+            return AppColors.primary;
           }
           return Colors.transparent;
         }),
@@ -447,13 +447,13 @@ class AppTheme {
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryDark;
+            return AppColors.primary;
           }
           return Colors.grey[400]!;
         }),
         trackColor: WidgetStateProperty.resolveWith<Color>((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.primaryDark.withValues(alpha: 0.5);
+            return AppColors.primary.withValues(alpha: 0.5);
           }
           return AppColors.textSecondaryDark.withValues(alpha: 0.3);
         }),
