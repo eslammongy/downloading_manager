@@ -37,12 +37,28 @@ class HomeScreen extends StatelessWidget {
               inputType: TextInputType.url,
               controller: urlController,
               label: AppStrings.enterDownloadUrl,
+              prefix: Icon(
+                Icons.link_rounded,
+                color: context.customColors.textSecondary,
+              ),
+              suffix: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.content_copy_rounded),
+              ),
             ),
             SizerUtil.gapH(16),
             CustomTextFormField(
               inputType: TextInputType.text,
               controller: fileNameController,
               label: AppStrings.enterFileName,
+              prefix: Icon(
+                Icons.title_rounded,
+                color: context.customColors.textSecondary,
+              ),
+              suffix: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.content_copy_rounded),
+              ),
             ),
             SizerUtil.gapH(42),
             const DownloaderActionsButton(),

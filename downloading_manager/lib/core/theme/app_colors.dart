@@ -81,7 +81,7 @@ class AppColors {
   static const Color backgroundDark = Color(0xFF121212);
   static const Color surfaceDark = Color(0xFF1B1B1B);
   static const Color textPrimaryDark = Color(0xFFFFFFFF);
-  static const Color textSecondaryDark = Color(0xFFE6E6E6);
+  static const Color textSecondaryDark = Color(0xFF9A9A9A);
   static const Color borderColorDark = Color(0xFF383838);
 
   // Common colors
